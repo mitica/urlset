@@ -1,0 +1,35 @@
+{
+  "name": "urlset",
+  "version": "0.1.0",
+  "description": "Application URLs model. Replacing static string URLs with hierarchical model.",
+  "main": "./urlset",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mitica/urlset.git"
+  },
+  "keywords": [
+    "links",
+    "link",
+    "nav",
+    "href"
+  ],
+  "author": "Dumitru Cantea",
+  "bugs": {
+    "url": "https://github.com/Mitica/urlset/issues"
+  },
+  "homepage": "https://github.com/Mitica/urlset",
+  "dependencies": {
+    "lodash": "~2.4.1"
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-coffee": "~0.10.0",
+    "grunt-contrib-jshint": "~0.8.0"
+  }
+}
