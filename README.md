@@ -9,7 +9,7 @@ URLs in our apps are hard-coded.
 ## Solution
 
 Building a hierarchical/readable model of URLs.
-Instead of `'\home'` we can write `urls.home()`, or `'\profile\'+name+'\photos'` -> `urls.profile.photos(name)`
+Instead of `'\home'` we can write `url.home()`, or `'\profile\'+name+'\photos'` -> `url.profile.photos(name)`
 
 ## Example
 
@@ -21,23 +21,23 @@ Using urlset is very simple:
 	// sitemap.json contains configuration file for urlset
 	urlset.load(__dirname + '/sitemap.json');
 
-	var urls 	= urlset.urls;
+	var url	= urlset.url;
 
 	// now, where we need to use link '/' we ca use:
-	urls.home();
+	url.home();
 
 	// we can add urls programmatically:
 	urlset.add('/login','login');
 	// now we have function:
-	urls.login(); //output: /login
+	url.login(); //output: /login
 
 	// we can create more complex urls:
 
 	urlset.add('/item-${0}.html','item','news');
 	// we have created function 'item' in section 'news':
-	urls.news.item(1234); //output: /item-1234.html
+	url.news.item(1234); //output: /item-1234.html
 	// with extra params:
-	urls.news.item(1234,{lang:'fr',source:'fb'}); //output: /item-1234.html?lang=fr&source=fb
+	url.news.item(1234,{lang:'fr',source:'fb'}); //output: /item-1234.html?lang=fr&source=fb
 
 ```
 
@@ -63,33 +63,34 @@ Configuration file(s) are in json format.
 	}
 }
 ```
+Every url in config file can be a string(like `"home": "/"`) or an object: `"friends": { "url": "/${0}/friends" }`.
+An url object MUST contain property "url" of string. If an object name starts with '@' - it is a section/set of URLs.
 
-Every object key can be a url definition or a section. If a key starts with a '@' its a section.
 This example creates:
 ```
-	urls.home(); // with no params, output: '/'
-	urls.item(p0,p1); // with 2 params, output: '/item/p0-p1'
-	urls.accounts.profile(); // with no params, output: '/accounts/profile'
-	urls.accounts.photos(p0); // with one param, output: '/accounts/p0/photos'
-	urls.accounts.points(p0); // with one param, output: '/p0/points' !! link is absolute, so it don't adds '/accounts' prefix
-	urls.accounts.friends(p0); // with one param, output: '/accounts/p0/friends'
+	url.home(); // with no params, output: '/'
+	url.item(p0,p1); // with 2 params, output: '/item/p0-p1'
+	url.accounts.profile(); // with no params, output: '/accounts/profile'
+	url.accounts.photos(p0); // with one param, output: '/accounts/p0/photos'
+	url.accounts.points(p0); // with one param, output: '/p0/points' !! link is absolute, so it don't adds '/accounts' prefix
+	url.accounts.friends(p0); // with one param, output: '/accounts/p0/friends'
 ```
 
-All urls accepts an extra param(object) for query: `urls.home({lang:'ru',_ref:'home'})` -> `'/?lang=ru&_ref=home'`
+All urls accept an extra param(object) for query: `url.home({lang:'ru',_ref:'home'})` -> `'/?lang=ru&_ref=home'`
 
 ## API
 
-### urlset.urls
+### urlset.url
 
-`urls` property keeps created urls structure.
+`url` property keeps created urls structure.
 
 ### urlset.init(Object)
 Inits urlset. Default configuration:
 ```
 	{
 		sectionChar: '@',
-		specialParams: [],
-		formater: formts.json
+		params: [],
+		formater: formats.json
 	}
 ```
 
@@ -100,5 +101,48 @@ Loads a file or a list of files containing urls configuration.
 
 ### urlset.add(String|Object,String[,String])
 
-Adds a url to urls: `urlset.add('/map','map','utils');` creates: `urls.utils.map()`
+Adds a url to urlset: `urlset.add('/map','map','utils');` creates: `url.utils.map()`
 
+## Special params
+
+We can define global special params. Special params are useful for localization, for example.
+If we want every link to add `lang` query param if `lang` is not default:
+```
+	urlset.add('/','home'); // added url home()
+	urlset.setParam({name:'lang', value: 'en'});
+	urlset.url.home({lang:'en'});
+	//output: /
+	urlset.url.home({lang:'ro'});
+	//output: /?lang=ro
+```
+
+Param structure:
+```
+{
+	name: string,		//param name, required
+	value: ?,			//param default value
+	useDefault: bool,	//if true - will use value for every url
+	format:['s','q']	//'s' for start url, 'q' for query
+}
+```
+More complex example:
+```
+	urlset.add('/','home'); // added url home()
+	urlset.addParam({name:'lang', value: 'en', format: 's', useDefault: true});
+	urlset.url.home();
+	//output: /en/
+	urlset.url.home({lang:'ro'});
+	//output: /ro/
+```
+
+### urlset.setParam(param)
+
+Sets a param
+
+### urlset.removeParam(name:String)
+
+Removes a param by name
+
+### urlset.getParam(name:String)
+
+Gets a param by name

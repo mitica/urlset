@@ -9,7 +9,7 @@ fs = require "fs"
 
 defaults=
 	sectionChar: '@',
-	specialParams: [],
+	params: [],
 	formater: formats.json
 
 
@@ -110,12 +110,12 @@ provider::buildUrls=()->
 ###
 	special params
 ###
-provider::getSpecialParam=(name)->
+provider::getParam=(name)->
 	self = @
-	if not _.isArray self._options.specialParams
+	if not _.isArray self._options.params
 		return null
 	p = null;
-	_.forEach self._options.specialParams, (param)->
+	_.forEach self._options.params, (param)->
 		if param.name == name
 			p = param
 			return false
@@ -123,23 +123,21 @@ provider::getSpecialParam=(name)->
 
 ###
 	sets a specil param
-	where @param can be: {name:'lang',default:'en',useDefault:false,format:'q'}
+	where @param can be: {name:'lang',value:'en',useDefault:false,format:'q'}
 ###
-provider::setSpecialParam=(param)->
+provider::setParam=(param)->
 	if not _.isObject param
 		return false
-	p = @.getSpecialParam param.name
-	if _.isNull p
-		@._options.specialParams.push param
-	else
-		@.removeSpecialParam param.name
-		@._options.specialParams.push param
+	p = @.getParam param.name
+	if not _.isNull p
+		@.removeParam param.name
+	@._options.params.push param
 	return true
 
-provider::removeSpecialParam=(name)->
-	p = @.getSpecialParam param.name
+provider::removeParam=(name)->
+	p = @.getParam param.name
 	if not _.isNull p
-		@._options.specialParams.splice @._options.specialParams.indexOf(p), 1
+		@._options.params.splice @._options.params.indexOf(p), 1
 		return true
 	return false
 ###
@@ -208,7 +206,7 @@ normalizeUrl=(nl,l,ld,options,args)->
 		extra = args[ld.args]
 		#console.log 'has extra ' + JSON.stringify extra
 		_.forEach extra, (value, name)->
-			sp = nl.getSpecialParam name
+			sp = nl.getParam name
 			#console.log 'sp='+JSON.stringify sp
 			if _.isNull sp
 				l = setUrlQParam l, name, value
@@ -217,14 +215,14 @@ normalizeUrl=(nl,l,ld,options,args)->
 				if sp.useDefault == true
 					esps.push sp.name
 					l = formatSPUrl l, sp, value
-				else if sp.default != value
+				else if sp.value != value
 					l = formatSPUrl l, sp, value
 			return true
-	sps = nl._options.specialParams
+	sps = nl._options.params
 	if sps.length > 0
 		_.forEach sps, (sp)->
-			if not _.contains(esps, sp.name) and sp.useDefault == true and not (_.isUndefined(sp.default) or _.isNull(sp.default))
-				l = formatSPUrl l, sp, sp.default
+			if not _.contains(esps, sp.name) and sp.useDefault == true and not (_.isUndefined(sp.value) or _.isNull(sp.value))
+				l = formatSPUrl l, sp, sp.value
 			return true
 
 
