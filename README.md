@@ -128,7 +128,7 @@ Param structure:
 More complex example:
 ```
 	urlset.add('/','home'); // added url home()
-	urlset.addParam({name:'lang', value: 'en', format: 's', useDefault: true});
+	urlset.setParam({name:'lang', value: 'en', format: 's', useDefault: true});
 	urlset.url.home();
 	//output: /en/
 	urlset.url.home({lang:'ro'});
