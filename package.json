@@ -1,6 +1,6 @@
 {
   "name": "urlset",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Application URLs model. Replacing static string URLs with hierarchical model.",
   "main": "./urlset",
   "scripts": {
@@ -11,7 +11,8 @@
     "url": "https://github.com/Mitica/urlset.git"
   },
   "keywords": [
-    "links",
+    "url",
+    "urlset",
     "link",
     "nav",
     "href"

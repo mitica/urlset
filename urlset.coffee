@@ -23,7 +23,7 @@ provider::init=(options)->
 
 provider::clear = ()->
 	@._data = {}
-	@.urls =
+	@.url =
 		$full: (url, host)->
 			return host + url
 	return @
@@ -72,7 +72,7 @@ provider::add=(url, name, path)->
 	paths = path.split '.'
 	#if _.isUndefined @.urls
 	#	@.urls = {}
-	container = @.urls
+	container = @.url
 	_.forEach paths, (pth)->
 		if _.isString(pth) and pth.length>0
 			if _.isUndefined(container[pth])
