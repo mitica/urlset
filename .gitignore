@@ -6,8 +6,6 @@ lib-cov
 *.out
 *.pid
 *.gz
-*.js
-usage.coffee
 
 pids
 logs
