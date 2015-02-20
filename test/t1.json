@@ -5,6 +5,7 @@
     "$name": "stiri",
     "$url": "/stiri",
     "item": "/item/${0}",
+    "item2": "/item/${0}/${1}",
     "id": {
       "$absolute": true,
       "$url": "/id-${0}",
