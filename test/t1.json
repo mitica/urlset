@@ -7,7 +7,18 @@
     "item": "/item/${0}",
     "id": {
       "$absolute": true,
-      "$url": "/id-${0}"
+      "$url": "/id-${0}",
+      "old": "/old",
+      "latest":{
+        "$url": "/latest"
+      }
+    },
+    "controls": {
+      "$name": "ctrl",
+      "places": {
+        "$url": "/places",
+        "name": "/name"
+      }
     }
   }
 }
