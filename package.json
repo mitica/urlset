@@ -1,6 +1,6 @@
 {
   "name": "urlset",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Application URLs model. Replacing static string URLs with hierarchical model.",
   "main": "./lib/urlset.js",
   "scripts": {
@@ -27,10 +27,5 @@
   },
   "engines": {
     "node": ">= 0.4.0"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-coffee": "~0.10.0",
-    "grunt-contrib-jshint": "~0.8.0"
   }
 }

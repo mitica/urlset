@@ -50,21 +50,20 @@ Configuration file(s) are in json format.
 {
 	"home": "/",
 	"item": "/item/${0}-${1}",
-	"@accounts": {
+	"accounts": {
 		"profile": "/profile",
 		"photos": "/${0}/photos",
 		"points":{
-			"absolute":true,
-			"url":"/${0}/points"
+			"$absolute":true,
+			"$url":"/${0}/points"
 		},
 		"friends": {
-			"url": "/${0}/friends"
+			"$url": "/${0}/friends"
 		}
 	}
 }
 ```
 Every url in config file can be a string(like `"home": "/"`) or an object: `"friends": { "url": "/${0}/friends" }`.
-An url object MUST contain property "url" of string. If an object name starts with '@' - it is a section/set of URLs.
 
 This example creates:
 ```
@@ -88,7 +87,7 @@ All urls accept an extra param(object) for query: `url.home({lang:'ru',_ref:'hom
 Inits urlset. Default configuration:
 ```
 	{
-		sectionChar: '@',
+		identifier: '$',
 		params: [],
 		formater: formats.json
 	}

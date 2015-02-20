@@ -1,0 +1,13 @@
+{
+  "$name": "v2",
+  "home": "/",
+  "news": {
+    "$name": "stiri",
+    "$url": "/stiri",
+    "item": "/item/${0}",
+    "id": {
+      "$absolute": true,
+      "$url": "/id-${0}"
+    }
+  }
+}
