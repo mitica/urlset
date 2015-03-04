@@ -10,15 +10,19 @@
       "$absolute": true,
       "$url": "/id-${0}",
       "old": "/old",
-      "latest":{
+      "latest": {
         "$url": "/latest"
       }
     },
     "controls": {
       "$name": "ctrl",
+      "$root": true,
       "places": {
         "$url": "/places",
-        "name": "/name"
+        "name": "/name",
+        "place": {
+          "photos": "/photos"
+        }
       }
     }
   }

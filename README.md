@@ -11,7 +11,7 @@ URLs in our apps are hard-coded.
 Building a hierarchical/readable model of URLs.
 Instead of `'\home'` we can write `url.home()`, or `'\profile\'+name+'\photos'` -> `url.profile.photos(name)`
 
-## Example
+## Usage
 
 Using urlset is very simple:
 ```
@@ -39,11 +39,19 @@ Using urlset is very simple:
 	// with extra params:
 	url.news.item(1234,{lang:'fr',source:'fb'}); //output: /item-1234.html?lang=fr&source=fb
 
+	//var alt_urlset = new urlset.Provider(); - create a new urlset
+
 ```
 
 ## Configuration file
 
 Configuration file(s) are in json format.
+
+#### Special names
+1. `$url` - url format for current node;
+2. `$name` - replace node name (by default is using node name for building url);
+3. `$absolute` - `true` for not to use parent's name in path;
+4. `$root` - reset as root, for childs;
 
 ### Example
 ```

@@ -16,5 +16,9 @@ console.log(urlset.url.news({
 }));
 console.log(urlset.url.news.id(121332));
 console.log(urlset.url.news.id.old());
+console.log(urlset.url.news.id.latest());
 console.log(urlset.url.news.controls.places());
+console.log(urlset.url.news.controls.places.place.photos());
 //console.log(urlset.url.news.item());
+
+//new urlset.Provider();
