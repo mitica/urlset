@@ -58,6 +58,7 @@ Configuration file(s) are in json format.
 {
 	"home": "/",
 	"item": "/item/${0}-${1}",
+	"account": "/account-${name}",
 	"accounts": {
 		"profile": "/profile",
 		"photos": "/${0}/photos",
@@ -81,6 +82,7 @@ This example creates:
 	url.accounts.photos(p0); // with one param, output: '/accounts/p0/photos'
 	url.accounts.points(p0); // with one param, output: '/p0/points' !! link is absolute, so it don't adds '/accounts' prefix
 	url.accounts.friends(p0); // with one param, output: '/accounts/p0/friends'
+	url.account({name: 'uniq', lang: 'ru'}); // with one param, output: '/account-uniq?lang=ru'
 ```
 
 All urls accept an extra param(object) for query: `url.home({lang:'ru',_ref:'home'})` -> `'/?lang=ru&_ref=home'`
