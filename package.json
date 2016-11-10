@@ -2,9 +2,12 @@
   "name": "urlset",
   "version": "0.4.2",
   "description": "Application URLs model. Replacing static string URLs with hierarchical model.",
-  "main": "./lib/urlset.js",
+  "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "engines": {
+    "node": ">=0.10.0"
   },
   "repository": {
     "type": "git",
@@ -18,14 +21,16 @@
     "href"
   ],
   "author": "Dumitru Cantea",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Mitica/urlset/issues"
   },
   "homepage": "https://github.com/Mitica/urlset",
   "dependencies": {
+    "debug": "^2.3.2",
     "lodash": "~2.4.1"
   },
-  "engines": {
-    "node": ">= 0.4.0"
+  "devDependencies": {
+    "mocha": "^3.1.2"
   }
 }
