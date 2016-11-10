@@ -1,6 +1,6 @@
 {
   "name": "urlset",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Application URLs model. Replacing static string URLs with hierarchical model.",
   "main": "./lib/index.js",
   "scripts": {

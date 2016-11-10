@@ -1,10 +1,12 @@
 {
   "home": "/",
   "accounts": {
-    "$url": "/{0}",
-    "id": "/{0}"
+    "$url": "/${0}",
+    "id": "/${0}"
   },
   "news": {
-    "id": "/{0}"
-  }
+    "id": "/${0}"
+  },
+  "topic": "/topic/${name}",
+  "search": "/search?ref=urlset"
 }
