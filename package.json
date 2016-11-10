@@ -1,6 +1,6 @@
 {
   "name": "urlset",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Application URLs model. Replacing static string URLs with hierarchical model.",
   "main": "./lib/index.js",
   "scripts": {
@@ -27,8 +27,7 @@
   },
   "homepage": "https://github.com/Mitica/urlset",
   "dependencies": {
-    "debug": "^2.3.2",
-    "lodash": "~2.4.1"
+    "debug": "^2.3.2"
   },
   "devDependencies": {
     "mocha": "^3.1.2"
