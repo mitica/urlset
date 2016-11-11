@@ -31,9 +31,8 @@ Configuration file(s) are in json format.
 
 #### Special names
 1. `$url` - url format for current node;
-2. `$name` - replace node name (by default is using node name for building url);
-3. `$absolute` - `true` for not to use parent's name in path;
-4. `$root` - reset as root, for childs;
+2. `$path` - append path for current node and childs;
+4. `$root` - ignore parents `$path`;
 
 ### Example
 ```
@@ -42,12 +41,10 @@ Configuration file(s) are in json format.
 	"item": "/item/${0}-${1}",
 	"account": "/account-${name}",
 	"accounts": {
+		"$path": "/accounts",
 		"profile": "/profile",
 		"photos": "/${0}/photos",
-		"points":{
-			"$absolute":true,
-			"$url":"/${0}/points"
-		},
+		"points":"/${0}/points",
 		"friends": {
 			"$url": "/${0}/friends"
 		}
