@@ -89,6 +89,7 @@ describe('urlset', function() {
 		assert.equal('/v2/topic/me?lang=ro', links.topic({ name: 'me', country: 'us', lang: 'ro' }));
 
 		assert.equal('/v2/search?ref=urlset&q=text&lang=ro', links.search({ q: 'text', country: 'us', lang: 'ro' }));
+		assert.equal('/v2/search?ref=urlset&q=text', links.search({ q: 'text', order: null }));
 	});
 
 });

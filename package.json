@@ -1,10 +1,10 @@
 {
   "name": "urlset",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Application URLs model. Replacing static string URLs with hierarchical model.",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "mocha"
   },
   "engines": {
     "node": ">=0.10.0"
