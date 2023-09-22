@@ -19,7 +19,7 @@ Using urlset is very simple:
 	var urlset	= require('urlset');
 
 	// sitemap.json contains configuration file for urlset
-	var links = urlset(__dirname + '/sitemap.json');
+	var links = urlset(require('./sitemap.json'));
 
 	// now, where we need to use link '/' we ca use:
 	links.home();
