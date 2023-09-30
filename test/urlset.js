@@ -117,7 +117,7 @@ describe("urlset", function () {
 		);
 		assert.equal(
 			"/v2/?q=text&tag=t1&tag=t2",
-			links.home({ q: "text", tag: ["t1", "t2"] })
+			links.home({ q: "text", tag: ["t1", "t2", undefined] })
 		);
 	});
 });
