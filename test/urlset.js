@@ -115,5 +115,9 @@ describe("urlset", function () {
 			"/v2/search?ref=urlset&q=text",
 			links.search({ q: "text", order: null })
 		);
+		assert.equal(
+			"/v2/?q=text&tag=t1&tag=t2",
+			links.home({ q: "text", tag: ["t1", "t2"] })
+		);
 	});
 });
