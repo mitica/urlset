@@ -17,6 +17,8 @@ describe("urlset", function () {
 		assert.equal("/1", links.news.id(1));
 
 		assert.equal("/stories/1", links.stories.id(1));
+
+		assert.equal("/stories/1/a/2", links.stories.id([1, "a", "2"]));
 	});
 
 	it("sitemap1.json: should work with params", function () {
